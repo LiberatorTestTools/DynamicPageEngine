@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Liberator.DynamicPageEngine/bin
+/Liberator.DynamicPageEngine/obj
+/Liberator.DynamicPageEngineTests/bin
+/Liberator.DynamicPageEngineTests/obj
