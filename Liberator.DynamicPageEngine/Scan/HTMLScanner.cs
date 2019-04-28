@@ -1,5 +1,5 @@
 ﻿using HtmlAgilityPack;
-using Liberator.DynamicPageEngine.Entities;
+using Liberator.DynamicPageEngine.Output;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace Liberator.DynamicPageEngine.Scan
         /// <summary>
         /// A list of Page Objects for use in other objects
         /// </summary>
-        public List<PageObjectEntry> PageObjects { get; set; }
+        public List<PageElement> PageObjects { get; set; }
 
         /// <summary>
         /// The body of the HTML document under consideration
@@ -45,7 +45,7 @@ namespace Liberator.DynamicPageEngine.Scan
         /// </summary>
         /// <param name="htmlDocument">The HTML document under consideration.</param>
         /// <returns>A list of page object entries.</returns>
-        public List<PageObjectEntry> ScanHtmlPage(string htmlDocument)
+        public List<PageElement> ScanHtmlPage(string htmlDocument)
         {
             HtmlDocument = new HtmlDocument();
             HtmlDocument.LoadHtml(htmlDocument);
@@ -58,7 +58,7 @@ namespace Liberator.DynamicPageEngine.Scan
         /// Obtains a collection of Page Object Entries given the tag name applied.
         /// </summary>
         /// <returns>A list of Page Object Entries that represent HTML Nodes.</returns>
-        List<PageObjectEntry> GetPageObjects()
+        List<PageElement> GetPageObjects()
         {
             IEnumerable<HtmlNode> htmlNodes = HtmlDocument.DocumentNode.SelectSingleNode("//body").Descendants();
             if (htmlNodes != null)
@@ -85,13 +85,13 @@ namespace Liberator.DynamicPageEngine.Scan
         }
 
         /// <summary>
-        /// Populates a PageObjectEntry with the data from the scanned HTML nodes.
+        /// Populates a PageElement with the data from the scanned HTML nodes.
         /// </summary>
         /// <param name="htmlNode">The node to add to the PageObject collection.</param>
         void PopulatePageObject(HtmlNode htmlNode)
         {
             PageObjects.Add(
-                   new PageObjectEntry()
+                   new PageElement()
                    {
                        ClassNames = GetClassesAsList(htmlNode),
                        CssSelector = GetCssSelector(htmlNode),
@@ -237,9 +237,9 @@ namespace Liberator.DynamicPageEngine.Scan
         /// Retrieves a list of page objects.
         /// </summary>
         /// <returns>A list of Page Object Entries.</returns>
-        List<PageObjectEntry> GetObjectsWithIdentifyingAttributes()
+        List<PageElement> GetObjectsWithIdentifyingAttributes()
         {
-            PageObjects = new List<PageObjectEntry>();
+            PageObjects = new List<PageElement>();
             GetPageObjects();
             return PageObjects;
         }
