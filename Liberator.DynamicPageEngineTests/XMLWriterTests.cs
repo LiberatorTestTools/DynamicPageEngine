@@ -1,5 +1,4 @@
-﻿using Liberator.DynamicPageEngine.Entities;
-using Liberator.DynamicPageEngine.Output;
+﻿using Liberator.DynamicPageEngine.Output;
 using Liberator.DynamicPageEngine.Scan;
 using NUnit.Framework;
 using System;
@@ -19,7 +18,7 @@ namespace Liberator.DynamicPageEngineTests
 
         string HtmlPage;
 
-        List<PageObjectEntry> PageObjects;
+        List<PageElement> PageObjects;
 
         XMLWriter XmlWriter;
 

@@ -1,4 +1,4 @@
-﻿using Liberator.DynamicPageEngine.Entities;
+﻿using Liberator.DynamicPageEngine.Output;
 using Liberator.DynamicPageEngine.Scan;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace Liberator.DynamicPageEngineTests
 
         string htmlPage;
 
-        List<PageObjectEntry> pageObjects;
+        List<PageElement> pageObjects;
 
 
         public HTMLScannerTests()
