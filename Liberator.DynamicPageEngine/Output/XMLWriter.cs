@@ -1,5 +1,4 @@
-﻿using Liberator.DynamicPageEngine.Entities;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Xml.Linq;
 
 namespace Liberator.DynamicPageEngine.Output
@@ -12,7 +11,7 @@ namespace Liberator.DynamicPageEngine.Output
         /// <summary>
         /// The name of the page.
         /// </summary>
-        string PageName;
+        public string PageName { get; set; }
 
         /// <summary>
         /// The element tree that represents the XML document.
@@ -26,7 +25,7 @@ namespace Liberator.DynamicPageEngine.Output
         /// <param name="nameSpace">The namespace for the XML document.</param>
         /// <param name="page">The name of the page to assign.</param>
         /// <returns>An XML document.</returns>
-        public XElement CreateDocument(List<PageObjectEntry> pageObjectEntries, string nameSpace, string page)
+        public XElement CreateDocument(List<PageElement> pageObjectEntries, string nameSpace, string page)
         {
             XNamespace xNamespace = nameSpace;
             PageName = page;
@@ -34,15 +33,15 @@ namespace Liberator.DynamicPageEngine.Output
             XElement pageObjects = new XElement(xNamespace + "pageObjects");
             
 
-            foreach (PageObjectEntry pageObjectEntry in pageObjectEntries)
+            foreach (PageElement PageElement in pageObjectEntries)
             {
-                XElement idElement = new XElement(xNamespace + "id", pageObjectEntry.Id);
-                XElement linkElement = new XElement(xNamespace + "link", pageObjectEntry.Link);
-                XElement tagElement = new XElement(xNamespace + "tagName", pageObjectEntry.TagName);
-                XElement nameAttributeElement = new XElement(xNamespace + "nameAttribute", pageObjectEntry.NameAttribute);
-                XElement objectNameElement = new XElement(xNamespace + "objectName", pageObjectEntry.ObjectName);
-                XElement cssElement = new XElement(xNamespace + "cssSelector", pageObjectEntry.CssSelector);
-                XElement xPathElement = new XElement(xNamespace + "xPath", pageObjectEntry.XPath);
+                XElement idElement = new XElement(xNamespace + "id", PageElement.Id);
+                XElement linkElement = new XElement(xNamespace + "link", PageElement.Link);
+                XElement tagElement = new XElement(xNamespace + "tagName", PageElement.TagName);
+                XElement nameAttributeElement = new XElement(xNamespace + "nameAttribute", PageElement.NameAttribute);
+                XElement objectNameElement = new XElement(xNamespace + "objectName", PageElement.ObjectName);
+                XElement cssElement = new XElement(xNamespace + "cssSelector", PageElement.CssSelector);
+                XElement xPathElement = new XElement(xNamespace + "xPath", PageElement.XPath);
 
 
                 XElement pageElement =

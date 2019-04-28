@@ -1,13 +1,7 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
-using System.Text;
-using System.Xml.Linq;
-using System.Xml.Schema;
-using System.Xml.Serialization;
 
 namespace Liberator.DynamicPageEngine.Attributes
 {
@@ -16,12 +10,21 @@ namespace Liberator.DynamicPageEngine.Attributes
     /// </summary>
     public static class PageLoader
     {
+        /// <summary>
+        /// Initialises the page object being passed.
+        /// </summary>
+        /// <param name="pageObject">The page object being passed.</param>
+        /// <param name="webElements">A collection of web elements found on the page.</param>
         public static void Initialise(IPageObject pageObject, out IEnumerable<IWebElement> webElements)
         {
             webElements = null;
         }
 
-
+        /// <summary>
+        /// Builds the By locator for the given page object.
+        /// </summary>
+        /// <param name="pageObjectAttribute">The attribute to be analysed.</param>
+        /// <returns>The By locator for the page object.</returns>
         internal static By GetLocator(PageObjectAttribute pageObjectAttribute)
         {
             var how = pageObjectAttribute.How;
