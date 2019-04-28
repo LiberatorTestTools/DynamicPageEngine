@@ -44,7 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\PageObjectEntry.cs" />
+    <Compile Include="Attributes\PageObjectAttribute.cs" />
+    <Compile Include="Attributes\FindsByAllAttribute.cs" />
+    <Compile Include="Attributes\FindsByChainAttribute.cs" />
+    <Compile Include="Attributes\How.cs" />
+    <Compile Include="Attributes\PageAttribute.cs" />
+    <Compile Include="Attributes\PageLoader.cs" />
+    <Compile Include="Utilities\XmlUtilities.cs" />
+    <Compile Include="IPageObject.cs" />
+    <Compile Include="Output\PageEntity.cs" />
+    <Compile Include="Output\PageElement.cs" />
     <Compile Include="Output\ClassWriter.cs" />
     <Compile Include="Output\IWriter.cs" />
     <Compile Include="Output\XMLWriter.cs" />
@@ -53,7 +62,7 @@
     <Compile Include="Scan\IScanner.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Entities\PageObject.xsd">
+    <None Include="Output\PageObject.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -68,5 +77,6 @@
       <Version>3.141.0</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
